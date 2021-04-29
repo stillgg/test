@@ -1,38 +1,272 @@
-.App {
-  text-align: center;
+//body,html{
+//  margin: 0;
+//  padding: 0;
+//}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Manrope';
+  src: local('Manrope Semibold'), local('Manrope-Semibold'), url('./assets/fonts/Manropesemibold.woff2') format('woff2'), url('./assets/fonts/Manropesemibold.woff') format('woff'), url('./assets/fonts/Manropesemibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: local('Manrope Medium'), local('Manrope-Medium'), url('./assets/fonts/Manropemedium.woff2') format('woff2'), url('./assets/fonts/Manropemedium.woff') format('woff'), url('./assets/fonts/Manropemedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: local('Manrope Thin'), local('Manrope-Thin'), url('./assets/fonts/Manropethin.woff2') format('woff2'), url('./assets/fonts/Manropethin.woff') format('woff'), url('./assets/fonts/Manropethin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: local('Manrope Light'), local('Manrope-Light'), url('./assets/fonts/Manropelight.woff2') format('woff2'), url('./assets/fonts/Manropelight.woff') format('woff'), url('./assets/fonts/Manropelight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: local('Manrope Regular'), local('Manrope-Regular'), url('./assets/fonts/Manroperegular.woff2') format('woff2'), url('./assets/fonts/Manroperegular.woff') format('woff'), url('./assets/fonts/Manroperegular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: local('Manrope Bold'), local('Manrope-Bold'), url('./assets/fonts/Manropebold.woff2') format('woff2'), url('./assets/fonts/Manropebold.woff') format('woff'), url('./assets/fonts/Manropebold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+$white: #ffffff;
+$grey: #191B1D;
+$grey2: #B7BABE;
+$grey3: #F4F4F4;
+$yellow: #FDD170;
+$red: #EB5757;
+
+body{
+  background: $grey2;
+  font-size: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@mixin flex-center{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+@mixin flex-column {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@mixin flex-column-start {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.App{
+  font-family: Manrope,Arial,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+
+  .header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+
+    .header_frontTest{
+      font-size: 36px;
+      font-weight: 800;
+      .white{
+        color: $white;
+      }
+    }
+
+    .header_test{
+      font-size: 84px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .header_help{
+      max-width: 55.6%;
+      text-align: center;
+      font-weight: 600;
+      .text{
+        font-size: 28px;
+        color: $white;
+      }
+    }
+
   }
-  to {
-    transform: rotate(360deg);
+
+  .main{
+    display: flex;
+    flex-wrap: wrap;
+    .fox,.interactive_card,.section_form{
+      width: 50%;
+      height: 50vw;
+    }
+
+    .fox{
+      border-top: 2px solid $grey;
+      border-bottom: 2px solid $grey;
+      border-right: 2px solid $grey;
+      height: 50vw;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      @include flex-column;
+
+      .fox_text{
+        @include flex-column;
+        align-items: center;
+        font-size: 14px;
+        text-align: center;
+        font-weight: 400;
+
+        .fox_text_animate{
+          text-align: center;
+          max-width: 46%;
+          margin-bottom: 12px;
+        }
+
+        .fox_text_model{
+          text-align: center;
+          max-width: 65%;
+          color: $white;
+          .underLine{
+            text-decoration: underline;
+          }
+        }
+
+      }
+    }
+
+    .interactive_card{
+      border-top: 2px solid $grey;
+      border-bottom: 2px solid $grey;
+      @include flex-center;
+      flex-direction: column;
+      perspective-origin: 0 50%;
+      perspective: 50vw;
+      .card-wrapper{
+        position: relative;
+        width: 284px;
+        transform: rotateY(25deg);
+        transition: .5s transform;
+        .card{
+          position: relative;
+          height: 444px;
+          z-index: 1000;
+          border-radius: 16px;
+          background: $white;
+          @include flex-column-start;
+
+          .img_infinity{
+            width: 167px;
+            height: 74px;
+            margin: 58px auto 38px;
+          }
+
+          .txt1{
+            text-align: center;
+            font-weight: 700;
+            display: block;
+            font-size: 28px;
+            line-height: 32px;
+          }
+
+          .txt2{
+            margin-top: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            line-height: 28px;
+            font-size: 20px;
+            display: block;
+            font-weight: 400;
+          }
+
+          .btn{
+            margin: 0 auto;
+            background: $yellow;
+            width: 218px;
+            height: 56px;
+            border-radius: 48px;
+            @include flex-center;
+            flex-wrap: wrap;
+            cursor: pointer;
+
+            .img_eye{
+              width: 22px;
+              height: 15px;
+              margin-right: 9px;
+            }
+
+            .btn_txt{
+              font-size: 14px;
+              text-transform: uppercase;
+              font-weight: 800;
+            }
+          }
+        }
+
+        .birds1{
+          position: absolute;
+          z-index: 1000000;
+          width: 169px;
+          height: 105px;
+          top:95px;
+          left:-130px;
+          transition: .5s transform;
+        }
+        .birds2{
+          position: absolute;
+          z-index: 0;
+          width: 90px;
+          height: 83px;
+          top: 31px;
+          left: 256px;
+          transition: .5s transform;
+        }
+      }
+
+      .interactive_card_txt{
+        margin-top: 34px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 19px;
+        font-weight: 400;
+        width: 46%;
+      }
+    }
+
+    .section_form{
+      border-bottom: 2px solid $grey;
+      border-right: 2px solid $grey;
+      .form{
+        width: 504px;
+        height: 608px;
+        background: white;
+        border-top: 5px solid $yellow;
+        border-bottom: 5px solid $yellow;
+      }
+    }
+
   }
+
 }
