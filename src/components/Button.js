@@ -1,6 +1,6 @@
 import React from "react"
 
-const Button = (props) =>{
+const Button = () =>{
     return(
         <input className={"btn"} type="submit" value={"кнопка"}/>
     )

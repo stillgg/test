@@ -13,3 +13,5 @@ export const InfinityIMG = require("./infinity.svg").default
 export const ScrapperIMG = require("./scraper.svg").default
 
 export const VectorIMG = require("./Vector.svg").default
+
+export const CrossIMG = require("./cross.svg").default

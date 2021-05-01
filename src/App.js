@@ -1,18 +1,16 @@
-import React, { useState,Suspense } from "react"
+import React, { Suspense } from "react"
 
 import Fox from "./components/Fox"
-
 import { Canvas } from "@react-three/fiber"
-import { Environment, OrbitControls } from "@react-three/drei"
-import Loader from "./components/Loader"
-import { useSpring, animated, config } from "react-spring/three";
+import { OrbitControls } from "@react-three/drei"
+import Loader from "./components/Fox/Loader"
 import InteractiveCard from "./components/InteractiveCard"
-import Form from "./components/Form";
+import Form from "./components/Form"
+import Tabs from "./components/Tabs"
 
 import './App.scss'
 
 function App() {
-
     return (
         <div className={"App"}>
             <header className={"header"}>
@@ -30,24 +28,26 @@ function App() {
 
             <main className={"main"}>
                 <section className={"fox"}>
-                    <Canvas className={"model"}>
-                        <directionalLight intensity={.5} position={[-50, 50, -10]}/>
-                        <ambientLight intensity={.1}/>
+                    <div className={"model_wrapper"}>
+                        <Canvas className={"model"}>
+                            <directionalLight intensity={.5} position={[-50, 50, -10]}/>
+                            <ambientLight intensity={.1}/>
 
-                        <Suspense
-                            fallback={<Loader/>}
-                        >
-                            <Fox/>
+                            <Suspense
+                                fallback={<Loader/>}
+                            >
+                                <Fox/>
 
-                            <OrbitControls
-                                enableZoom={false}
-                                maxAzimuthAngle={6.28}
-                                maxPolarAngle={1.4}
-                                minAzimuthAngle={0}
-                                minPolarAngle={1.4}
-                            />
-                        </Suspense>
-                    </Canvas>
+                                <OrbitControls
+                                    enableZoom={false}
+                                    maxAzimuthAngle={6.28}
+                                    maxPolarAngle={1.4}
+                                    minAzimuthAngle={0}
+                                    minPolarAngle={1.4}
+                                />
+                            </Suspense>
+                        </Canvas>
+                    </div>
 
                     <div className={"fox_text"}>
                         <p className={"fox_text_animate"}>
@@ -72,10 +72,25 @@ function App() {
 
                 <section className={"section_form"}>
                     <Form/>
+                    <p className={"helper"}>
+                        Cверстать форму с учетом всех состояний.
+                    </p>
+                </section>
+
+                <section className={"section_tabs"}>
+                    <Tabs/>
+                    <p className={"helper"}>
+                        Сверстать табы
+                    </p>
                 </section>
             </main>
+            <footer className={"footer"}>
+                <p>
+                    Не стесняйтесь задавать вопросы по заданию, если они есть.
+                </p>
+            </footer>
         </div>
-    );
+    )
 }
 
 export default App

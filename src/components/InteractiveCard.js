@@ -1,18 +1,17 @@
 import React, {useState} from "react"
 import {Birds1IMG, Birds2IMG,InfinityIMG} from "../assets/image/index"
-import Button from "./Button";
+import Button from "./Button"
 
-const InteractiveCard = (props) =>{
+const InteractiveCard = () =>{
     const [transformX, setTransformX] = useState(0)
     const [transformY, setTransformY] = useState(0)
     const [paralax, setParalax] = useState(false)
-    const documentHeight = document.documentElement.clientHeight
 
     return(
-        <div className={"card-wrapper"}
+        <div className={"card_wrapper"}
              onMouseMove={e => {
                  const getCard = (node) =>{
-                     if(node.className === "card-wrapper"){
+                     if(node.className === "card_wrapper"){
                          return node
                      }
                      return getCard(node.parentNode)
